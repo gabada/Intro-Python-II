@@ -12,5 +12,12 @@ class Player:
         return(f'{self.name} has health of {self.health} and is in {self.room}')
 
     def move(self, direction):
-        self.room = self.room.n_to
+        if direction == 'n':
+            self.room = self.room.n_to
+        elif direction =='e':
+            self.room = self.room.e_to
+        elif direction =='w':
+            self.room = self.room.w_to
+        elif direction =='s':
+            self.room = self.room.s_to
 

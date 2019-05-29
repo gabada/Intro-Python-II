@@ -40,6 +40,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player1_name = input('What is your Name? ')
+print('')
 player1_age = input('How old are you? ')
 
 
@@ -57,25 +58,31 @@ valid_directions = ['n','e','w','s']
 #
 # If the user enters "q", quit the game.
 
+def invalid():
+    print('')
+    print(f'Invalid Direction! You are currently in {current_player.room.name}')
+    print('')
+    direction = input(f'Where would you like to go? ')
+    print('')
+
+
 while True:
     print(f'You are currently in {current_player.room.name}')
+    print('')
     print(f'{current_player.room.description}')
+    print('')
     direction = input(f'Where would you like to go? ')
-    if direction in valid_directions:
-        current_player.move(direction)
-        print(f'{current_player.room.name}')
-    # break
-
-
-
-
-
-
-# print(current_player.room.n_to)
-
-
-
-# x = Room("Outside Cave Entrance", "North of you, the cave mount beckons")
-
-# print(x.description)
-# print(room['foyer'])
+    print('')
+    if direction.lower() in valid_directions:
+        try:
+            current_player.move(direction)
+            print(f'{current_player.room.name}')
+            print('')
+        except:
+            invalid()
+    elif direction.lower() == 'q':
+        print('')
+        print('Thanks for playing!')
+        break
+    else:
+        invalid()
