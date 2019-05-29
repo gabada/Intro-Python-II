@@ -21,9 +21,9 @@ to north. The smell of gold permeates the air."""),
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
     'dungeon': Room("The Dungeon", """You've fallen into the dungeon! There are
-     skeletons everywhere. Try to get out by going south!"""),
+skeletons everywhere. Try to get out by going south!"""),
     'roof': Room("The Roof", """You escaped the house! You are on the roof! Not sure
-    how you will leave though... Have a flare gun? Please don't jump off our roof"""),
+how you will leave though... Have a flare gun? Please don't jump off our roof"""),
 }
 
 
