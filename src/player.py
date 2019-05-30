@@ -7,6 +7,7 @@ class Player:
         self.age = age
         self.health = health
         self.room = room
+        self.items = []
 
     def __str__(self):
         return(f'{self.name} has health of {self.health} and is in {self.room}')
