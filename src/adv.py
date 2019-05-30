@@ -68,8 +68,10 @@ print('')
 player1_age = input('How old are you? ')
 
 
-current_player = Player(player1_name, player1_age, 100, room['outside'])
+current_player = Player(player1_name, player1_age, 100, room['outside'], None)
 valid_directions = ('n','e','w','s')
+valid_items = ('compass','pencil', 'rock','gun','hammer','money','telescope','gold',
+    'crowbar','donut','shakles','teeth', 'flares', 'ladder', 'rope')
 
 # Write a loop that:
 #
@@ -83,22 +85,101 @@ valid_directions = ('n','e','w','s')
 # If the user enters "q", quit the game.
 
 def invalid():
-    print(f'Invalid Direction! You are currently {current_player.room.name}\n')
+    print(f'Invalid Direction! You are currently {current_player.current_room.name}\n')
     direction = input(f'Where would you like to go? ')
 
 
 while True:
-    print(f'You are currently in {current_player.room.name}\n')
-    print(f'{current_player.room.description}, Items: {", ".join([item.name for item in current_player.room.items])}\n')
-    direction = input(f'Where would you like to go? ')
+    print(f'You are currently in {current_player.current_room.name}\n')
+    print('To pick up or drop an item just enter the name of the item you see!\n')
+    print(f'{current_player.current_room.description}, Items: {", ".join([item.name for item in current_player.current_room.items])}\n')
+    direction = input(f'What now? ')
     if direction.lower() in valid_directions:
         try:
             current_player.move(direction)
-            print(f'{current_player.room.name}')
+            print(f'{current_player.current_room.name}')
         except:
             invalid()
     elif direction.lower() == 'q':
         print('Thanks for playing!\n')
         break
+    elif direction.lower() in valid_items and 'get' or 'drop':
+        if direction.lower().split()[1] == 'compass':
+            try:
+                current_player.pickup(compass)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'pencil':
+            try:
+                current_player.pickup(pencil)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'rock':
+            try:
+                current_player.pickup(rock)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'gun':
+            try:
+                current_player.pickup(gun)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'hammer':
+            try:
+                current_player.pickup(hammer)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'money':
+            try:
+                current_player.pickup(money)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'telescope':
+            try:
+                current_player.pickup(telescope)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'gold':
+            try:
+                current_player.pickup(gold)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'crowbar':
+            try:
+                current_player.pickup(crowbar)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'donut':
+            try:
+                current_player.pickup(donut)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'shakles':
+            try:
+                current_player.pickup(shakles)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'teeth':
+            try:
+                current_player.pickup(teeth)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower().split()[1] == 'flares':
+            try:
+                current_player.pickup(flares)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower() == 'ladder':
+            try:
+                current_player.pickup(ladder)
+            except:
+                print('That item is too far away!\n')
+        elif direction.lower() == 'rope':
+            try:
+                current_player.pickup(rope)
+            except:
+                print('That item is too far away!\n')
+        else:
+            print('That item is too heavy to pick up!')
     else:
         invalid()
